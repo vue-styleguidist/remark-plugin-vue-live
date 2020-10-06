@@ -1,0 +1,22 @@
+{
+  "name": "remark-plugin-vue-live",
+  "version": "0.0.1",
+  "description": "Remark plugin to transform fenced code into examples in vue-live",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elevatebart/remark-plugin-vue-live.git"
+  },
+  "keywords": [
+    "remark",
+    "vue-live",
+    "vuejs",
+    "markdown"
+  ],
+  "author": "elevatebart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elevatebart/remark-plugin-vue-live/issues"
+  },
+  "homepage": "https://github.com/elevatebart/remark-plugin-vue-live#readme"
+}
