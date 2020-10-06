@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elevatebart/remark-plugin-vue-live.git"
+    "url": "git+https://github.com/vue-styleguidist/remark-plugin-vue-live.git"
   },
   "keywords": [
     "remark",
@@ -16,7 +16,7 @@
   "author": "elevatebart",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elevatebart/remark-plugin-vue-live/issues"
+    "url": "https://github.com/vue-styleguidist/remark-plugin-vue-live/issues"
   },
-  "homepage": "https://github.com/elevatebart/remark-plugin-vue-live#readme"
+  "homepage": "https://github.com/vue-styleguidist/remark-plugin-vue-live#readme"
 }
