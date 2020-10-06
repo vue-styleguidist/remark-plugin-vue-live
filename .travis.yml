@@ -4,17 +4,17 @@ node_js:
   - lts/*
 
 # In order to avoid double build on pull requests,
-# only build on pushes on master and on pushes on pull requests
+# only build on pushes on main and on pushes on pull requests
 branches:
   only:
-    - master
+    - main
 
 stages:
   - test
   - name: demo
-    if: type != pull_request AND branch = master
+    if: type != pull_request AND branch = main
   - name: release
-    if: type != pull_request AND branch = master
+    if: type != pull_request AND branch = main
 
 jobs:
   include:
