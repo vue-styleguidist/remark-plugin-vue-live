@@ -1,17 +1,16 @@
 const visit = require("unist-util-visit");
 const { parseComponent } = require("vue-template-compiler");
 const { isCodeVueSfc } = require("vue-inbrowser-compiler-utils");
+const getImports = require("./getImports");
 
-export default function attacher({ liveFilter } = {}) {
-  return (ast) => visit(ast, "code", visitor);
-
+function getAttacher({ liveFilter } = {}) {
   function visitor(node) {
-    let { lang } = node;
+    let { lang, meta } = node;
 
     if (
       liveFilter
-        ? !liveFilter(lang)
-        : !/ live$/.test(lang) && !/ live /.test(lang)
+        ? !liveFilter(lang, meta)
+        : !/live$/.test(meta) && !/live /.test(meta)
     ) {
       return;
     }
@@ -35,17 +34,40 @@ export default function attacher({ liveFilter } = {}) {
     // add this as a prop
     const scr = getScript(code);
 
-    const langArray = lang.split(" ");
-    const langClean = langArray[0];
-    const codeClean = code.replace(/\`/g, "\\`").replace(/\$/g, "\\$");
-    const editorProps = langArray.find((l) => /^\{.+\}$/.test(l));
-    const jsx = langArray.length > 2 && langArray[1] === "jsx" ? "jsx " : ""; // to enable jsx, we want ```vue jsx live or ```jsx jsx live
-    const markdownGenerated = `<vue-live ${jsx}
-        :layoutProps="{lang:'${langClean}'}" 
-        :code="\`${codeClean}\`" 
-        ${editorProps ? ` :editorProps="${editorProps}"` : ""}
-         />`;
+    const requires = getImports(scr).map(
+      (mod) => `'${mod}': require('${mod}')`
+    );
 
+    const codeClean = code.replace(/\`/g, "\\`").replace(/\$/g, "\\$");
+
+    const editorPropsArray = /\{.+\}/.exec(meta);
+    const editorProps = editorPropsArray ? editorPropsArray[0] : undefined;
+    const metaArray = meta ? meta.replace(editorProps, "").split(" ") : [];
+    const jsx = metaArray.length > 2 && metaArray[1] === "jsx" ? "jsx " : ""; // to enable jsx, we want ```vue jsx live or ```jsx jsx live
+    const markdownGenerated = `<vue-live ${jsx}
+      :layoutProps="{lang:'${lang}'}"${
+      requires.length
+        ? `
+      :requires="{${requires.join(",")}}"`
+        : ""
+    }
+      :code="\`${codeClean}\`" ${
+      editorProps
+        ? `
+      :editorProps="${editorProps
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")}"`
+        : ""
+    } />`;
+
+    node.type = "html";
     node.value = markdownGenerated;
   }
+
+  return function attacher() {
+    return (ast) => visit(ast, "code", visitor);
+  };
 }
+
+module.exports = getAttacher;
