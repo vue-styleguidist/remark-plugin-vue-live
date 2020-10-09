@@ -3,7 +3,9 @@ const { parseComponent } = require("vue-template-compiler");
 const { isCodeVueSfc } = require("vue-inbrowser-compiler-utils");
 const getImports = require("./getImports");
 
-function getAttacher({ liveFilter } = {}) {
+module.exports = function attacher({ liveFilter } = {}) {
+  return (ast) => visit(ast, "code", visitor);
+
   function visitor(node) {
     let { lang, meta } = node;
 
@@ -64,10 +66,4 @@ function getAttacher({ liveFilter } = {}) {
     node.type = "html";
     node.value = markdownGenerated;
   }
-
-  return function attacher() {
-    return (ast) => visit(ast, "code", visitor);
-  };
-}
-
-module.exports = getAttacher;
+};

@@ -3,7 +3,7 @@ const plugin = require("./index.js");
 
 test("transform fenced into vue-live with live flag", () => {
   remark()
-    .use(plugin())
+    .use(plugin)
     .process(
       `
 \`\`\`vue live
@@ -26,7 +26,7 @@ test("transform fenced into vue-live with live flag", () => {
 
 test("avoid transform fenced into vue-live", () => {
   remark()
-    .use(plugin())
+    .use(plugin)
     .process(
       `
 \`\`\`vue
@@ -49,7 +49,7 @@ test("avoid transform fenced into vue-live", () => {
 
 test("transform custom fenced into vue-live", () => {
   remark()
-    .use(plugin({ liveFilter: (lang) => /pizza/.test(lang) }))
+    .use(plugin, { liveFilter: (lang) => /pizza/.test(lang) })
     .process(
       `
 \`\`\`pizza
@@ -72,7 +72,7 @@ test("transform custom fenced into vue-live", () => {
 
 test("transform require and import statements", () => {
   remark()
-    .use(plugin())
+    .use(plugin)
     .process(
       `
 \`\`\`js live
@@ -100,7 +100,7 @@ const a = require('test/req')
 
 test("transform require and import statements", () => {
   remark()
-    .use(plugin())
+    .use(plugin)
     .process(
       `
   \`\`\`js live {"lineNumbers": true}

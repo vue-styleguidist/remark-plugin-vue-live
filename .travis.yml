@@ -11,8 +11,6 @@ branches:
 
 stages:
   - test
-  - name: demo
-    if: type != pull_request AND branch = main
   - name: release
     if: type != pull_request AND branch = main
 
@@ -21,6 +19,7 @@ jobs:
     - stage: test
       script:
         - npx danger ci
+        - yarn test
 
     - stage: release
       script:
