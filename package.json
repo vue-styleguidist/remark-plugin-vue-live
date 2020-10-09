@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/vue-styleguidist/remark-plugin-vue-live/issues"
   },
-  "homepage": "https://github.com/vue-styleguidist/remark-plugin-vue-live#readme"
+  "homepage": "https://github.com/vue-styleguidist/remark-plugin-vue-live#readme",
+  "dependencies": {
+    "unist-util-visit": "^2.0.3",
+    "vue-inbrowser-compiler-utils": "^4.32.1",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "peerDependencies": {
+    "vue-live": "^1.14.0"
+  }
 }

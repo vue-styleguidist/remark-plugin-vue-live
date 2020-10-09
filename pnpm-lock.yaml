@@ -1,0 +1,61 @@
+dependencies:
+  unist-util-visit: 2.0.3
+  vue-inbrowser-compiler-utils: 4.32.1
+  vue-template-compiler: 2.6.12
+lockfileVersion: 5.1
+packages:
+  /@types/unist/2.0.3:
+    dev: false
+    resolution:
+      integrity: sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
+  /camelcase/5.3.1:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
+  /de-indent/1.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=
+  /he/1.2.0:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+  /unist-util-is/4.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-Ofx8uf6haexJwI1gxWMGg6I/dLnF2yE+KibhD3/diOqY2TinLcqHXCV6OI5gFVn3xQqDH+u0M625pfKwIwgBKQ==
+  /unist-util-visit-parents/3.1.0:
+    dependencies:
+      '@types/unist': 2.0.3
+      unist-util-is: 4.0.2
+    dev: false
+    resolution:
+      integrity: sha512-0g4wbluTF93npyPrp/ymd3tCDTMnP0yo2akFD2FIBAYXq/Sga3lwaU1D8OYKbtpioaI6CkDcQ6fsMnmtzt7htw==
+  /unist-util-visit/2.0.3:
+    dependencies:
+      '@types/unist': 2.0.3
+      unist-util-is: 4.0.2
+      unist-util-visit-parents: 3.1.0
+    dev: false
+    resolution:
+      integrity: sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==
+  /vue-inbrowser-compiler-utils/4.32.1:
+    dependencies:
+      camelcase: 5.3.1
+    dev: false
+    resolution:
+      integrity: sha512-IL8rBV3lCyHErqD8sBdQhWz3zJ/wLzG6JfoSzZ3K6HShS5QqIQfJN0GESvzIos6EGvmtByEf4TTJnjm12b51VQ==
+  /vue-template-compiler/2.6.12:
+    dependencies:
+      de-indent: 1.0.2
+      he: 1.2.0
+    dev: false
+    resolution:
+      integrity: sha512-OzzZ52zS41YUbkCBfdXShQTe69j1gQDZ9HIX8miuC9C3rBCk9wIRjLiZZLrmX9V+Ftq/YEyv1JaVr5Y/hNtByg==
+specifiers:
+  unist-util-visit: ^2.0.3
+  vue-inbrowser-compiler-utils: ^4.32.1
+  vue-template-compiler: ^2.6.12
