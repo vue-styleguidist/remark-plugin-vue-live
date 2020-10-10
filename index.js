@@ -40,7 +40,12 @@ module.exports = function attacher({ liveFilter } = {}) {
       (mod) => `'${mod}': require('${mod}')`
     );
 
-    const codeClean = code.replace(/\`/g, "\\`").replace(/\$/g, "\\$");
+    const codeClean = code
+      .replace(/\`/g, "\\`")
+      .replace(/\$/g, "\\$")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
 
     const editorPropsArray = /\{.+\}/.exec(meta);
     const editorProps = editorPropsArray ? editorPropsArray[0] : undefined;
