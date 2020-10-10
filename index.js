@@ -66,7 +66,7 @@ module.exports = function attacher({ liveFilter } = {}) {
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")}"`
         : ""
-    } />`;
+    } ></vue-live>`;
 
     node.type = "html";
     node.value = markdownGenerated;
