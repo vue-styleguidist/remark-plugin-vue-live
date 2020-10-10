@@ -16,8 +16,8 @@ test("transform fenced into vue-live with live flag", () => {
         }
         expect(String(file)).toMatchInlineSnapshot(`
           "<vue-live 
-                :layoutProps=\\"{lang:'vue'}\\"
-                :code=\\"\`<comp/>\`\\"  />
+                :layout-props=\\"{lang:'vue'}\\"
+                :code=\\"\`&lt;comp/&gt;\`\\"  />
           "
         `);
       }
@@ -62,8 +62,8 @@ test("transform custom fenced into vue-live", () => {
         }
         expect(String(file)).toMatchInlineSnapshot(`
           "<vue-live 
-                :layoutProps=\\"{lang:'pizza'}\\"
-                :code=\\"\`<comp/>\`\\"  />
+                :layout-props=\\"{lang:'pizza'}\\"
+                :code=\\"\`&lt;comp/&gt;\`\\"  />
           "
         `);
       }
@@ -87,11 +87,11 @@ const a = require('test/req')
         }
         expect(String(file)).toMatchInlineSnapshot(`
           "<vue-live 
-                :layoutProps=\\"{lang:'js'}\\"
+                :layout-props=\\"{lang:'js'}\\"
                 :requires=\\"{'test/import': require('test/import'),'test/req': require('test/req')}\\"
                 :code=\\"\`import b from 'test/import'
           const a = require('test/req')
-          <comp/>\`\\"  />
+          &lt;comp/&gt;\`\\"  />
           "
         `);
       }
@@ -113,9 +113,9 @@ test("transform require and import statements", () => {
         }
         expect(String(file)).toMatchInlineSnapshot(`
           "<vue-live 
-                :layoutProps=\\"{lang:'js'}\\"
-                :code=\\"\`<comp/>\`\\" 
-                :editorProps=\\"{&quot;lineNumbers&quot;: true}\\" />
+                :layout-props=\\"{lang:'js'}\\"
+                :code=\\"\`&lt;comp/&gt;\`\\" 
+                :editor-props=\\"{&quot;lineNumbers&quot;: true}\\" />
           "
         `);
       }
