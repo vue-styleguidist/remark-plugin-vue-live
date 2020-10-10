@@ -47,7 +47,7 @@ module.exports = function attacher({ liveFilter } = {}) {
     const metaArray = meta ? meta.replace(editorProps, "").split(" ") : [];
     const jsx = metaArray.length > 2 && metaArray[1] === "jsx" ? "jsx " : ""; // to enable jsx, we want ```vue jsx live or ```jsx jsx live
     const markdownGenerated = `<vue-live ${jsx}
-      :layoutProps="{lang:'${lang}'}"${
+      :layout-props="{lang:'${lang}'}"${
       requires.length
         ? `
       :requires="{${requires.join(",")}}"`
@@ -56,7 +56,7 @@ module.exports = function attacher({ liveFilter } = {}) {
       :code="\`${codeClean}\`" ${
       editorProps
         ? `
-      :editorProps="${editorProps
+      :editor-props="${editorProps
         .replace(/"/g, "&quot;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")}"`
