@@ -12,8 +12,10 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - run: npx danger ci
-        name: Danger
+      - name: Danger JS
+        uses: danger/danger-js@X.Y.Z
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: yarn test
         name: Test
