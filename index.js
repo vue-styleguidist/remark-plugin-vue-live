@@ -1,5 +1,5 @@
 const visit = require("unist-util-visit");
-const { parseComponent } = require("vue-template-compiler");
+const { parse } = require('@vue/compiler-sfc')
 const { isCodeVueSfc } = require("vue-inbrowser-compiler-utils");
 const getImports = require("./getImports");
 
@@ -21,8 +21,8 @@ module.exports = function attacher({ liveFilter } = {}) {
       // script is at the beginning of a line after a return
       // In case we are loading a vue component as an example, extract script tag
       if (isCodeVueSfc(code)) {
-        const parts = parseComponent(code);
-        return parts && parts.script ? parts.script.content : "";
+        const parts = parse(code);
+        return parts && parts.descriptor && parts.descriptor.script ? parts.descriptor.script.content : "";
       }
 
       //else it could be the weird almost jsx of vue-styleguidist
