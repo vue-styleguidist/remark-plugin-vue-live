@@ -13,7 +13,7 @@ jobs:
         run: yarn
 
       - name: Danger JS
-        uses: danger/danger-js@X.Y.Z
+        run: npx danger ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
